@@ -1,0 +1,25 @@
+ads:
+  enabled: true
+  data-shields:
+    class_material:
+      driver-type: CLASS
+      column-name: class_id
+    grade_book:
+      driver-type: GRADE
+      column-name: grade_id
+    teacher_notice:
+      driver-type: TEACHER
+      column-name: teacher_id
+spring:
+  datasource:
+    url: jdbc:h2:mem:test
+    username: sa
+    password: password
+    driver-class-name: org.h2.Driver
+  sql:
+    init:
+      schema-locations: classpath:db/schema.sql
+      data-locations: classpath:db/data.sql
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
