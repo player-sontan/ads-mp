@@ -18,12 +18,12 @@ insert into student (student_name, class_id, grade_id) values ('Amy', 1, 1);
 insert into student (student_name, class_id, grade_id) values ('Bob', 2, 1);
 insert into student (student_name, class_id, grade_id) values ('Carl', 2, 2);
 
-insert into student_teacher(student_name, teacher_id) values ('Amy', 1);
-insert into student_teacher(student_name, teacher_id) values ('Bob', 2);
-insert into student_teacher(student_name, teacher_id) values ('Carl', 3);
-insert into student_teacher(student_name, teacher_id) values ('Amy', 4);
-insert into student_teacher(student_name, teacher_id) values ('Bob', 5);
-insert into student_teacher(student_name, teacher_id) values ('Carl', 6);
+insert into class_teacher(class_id, teacher_id) values (1, 1);
+insert into class_teacher(class_id, teacher_id) values (2, 2);
+insert into class_teacher(class_id, teacher_id) values (2, 3);
+insert into class_teacher(class_id, teacher_id) values (1, 4);
+insert into class_teacher(class_id, teacher_id) values (2, 5);
+insert into class_teacher(class_id, teacher_id) values (2, 6);
 
 insert into class_material(class_id, material_name) values (1, 'BlackBoard');
 insert into class_material(class_id, material_name) values (2, 'WhiteBoard');
@@ -37,12 +37,12 @@ insert into grade_book(grade_id, book_name) values (2, 'Physics2');
 insert into grade_book(grade_id, book_name) values (3, 'Physics3');
 
 
-insert into teacher_notice(teacher_id, notice_content, grade_id, book_name) values (1, 'Do math homework page 1 to 2 please', 1, 'Math1');
-insert into teacher_notice(teacher_id, notice_content, grade_id, book_name) values (2, 'Do math homework page 1 to 2 please', 2, 'Math2');
-insert into teacher_notice(teacher_id, notice_content, grade_id, book_name) values (3, 'Do math homework page 1 to 2 please', 3, 'Math3');
-insert into teacher_notice(teacher_id, notice_content, grade_id, book_name) values (4, 'Read books yourself', 1, 'Physics1');
-insert into teacher_notice(teacher_id, notice_content, grade_id, book_name) values (5, 'Read books yourself', 2, 'Physics2');
-insert into teacher_notice(teacher_id, notice_content, grade_id, book_name) values (6, 'Read books yourself', 3, 'Physics3');
+insert into teacher_notice(teacher_id, notice_content, book_name) values (1, 'Do math homework page 1 to 2 please', 'Math1');
+insert into teacher_notice(teacher_id, notice_content, book_name) values (2, 'Do math homework page 1 to 2 please', 'Math2');
+insert into teacher_notice(teacher_id, notice_content, book_name) values (3, 'Do math homework page 1 to 2 please', 'Math3');
+insert into teacher_notice(teacher_id, notice_content, book_name) values (4, 'Read books yourself', 'Physics1');
+insert into teacher_notice(teacher_id, notice_content, book_name) values (5, 'Read books yourself', 'Physics2');
+insert into teacher_notice(teacher_id, notice_content, book_name) values (6, 'Read books yourself', 'Physics3');
 
 
 

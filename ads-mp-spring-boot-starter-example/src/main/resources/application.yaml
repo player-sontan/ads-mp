@@ -4,6 +4,9 @@ ads:
     class_material:
       driver-type: CLASS
       column-name: class_id
+    class_teacher:
+      driver-type: CLASS
+      column-name: class_id
     grade_book:
       driver-type: GRADE
       column-name: grade_id

@@ -14,7 +14,17 @@
  * limitations under the License.
  */
 
-package org.ads.test.service;
+package org.ads.test.mapper;
 
-public class StudentTeacher {
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.ads.test.entity.Student;
+import org.ads.test.entity.TeacherNotice;
+import org.apache.ibatis.annotations.Select;
+
+import java.util.List;
+
+public interface StudentMapper extends BaseMapper<Student> {
+
+    @Select("select * from class_teacher ct left join teacher_notice tn on ct.teacher_id=tn.teacher_id")
+    List<TeacherNotice> selectNotice();
 }

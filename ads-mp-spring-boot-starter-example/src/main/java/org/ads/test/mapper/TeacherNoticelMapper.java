@@ -17,7 +17,7 @@
 package org.ads.test.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.ads.test.service.TeacherNotice;
+import org.ads.test.entity.TeacherNotice;
 
 public interface TeacherNoticelMapper extends BaseMapper<TeacherNotice> {
 }

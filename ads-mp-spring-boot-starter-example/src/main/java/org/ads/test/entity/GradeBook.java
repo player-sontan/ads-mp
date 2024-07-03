@@ -14,16 +14,10 @@
  * limitations under the License.
  */
 
-package org.ads.test.service;
+package org.ads.test.entity;
 
 import lombok.Data;
 
 @Data
-public class Student {
-
-    private String studentName;
-
-    private Integer classId;
-
-    private Integer gradeId;
+public class GradeBook {
 }

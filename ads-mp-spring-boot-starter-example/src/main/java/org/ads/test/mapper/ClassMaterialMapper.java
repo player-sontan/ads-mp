@@ -17,7 +17,7 @@
 package org.ads.test.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
-import org.ads.test.service.ClassMaterial;
+import org.ads.test.entity.ClassMaterial;
 
 public interface ClassMaterialMapper extends BaseMapper<ClassMaterial> {
 }

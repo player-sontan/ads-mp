@@ -14,11 +14,14 @@
  * limitations under the License.
  */
 
-package org.ads.test.service;
+package org.ads.test.entity;
 
-import org.springframework.stereotype.Service;
+import lombok.Data;
 
-@Service
-public class ClassMaterialService {
+@Data
+public class ClassTeacher {
 
+    private Integer classId;
+
+    private Integer teacherId;
 }

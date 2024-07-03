@@ -20,8 +20,8 @@ create table if not exists student (
     grade_id int not null
 );
 
-create table if not exists student_teacher (
-    student_name varchar(255) not null,
+create table if not exists class_teacher (
+    class_id int not null,
     teacher_id   int not null
 );
 
@@ -38,6 +38,5 @@ create table if not exists grade_book (
 create table if not exists teacher_notice (
     teacher_id int not null,
     notice_content varchar(255) not null,
-    grade_id int not null,
     book_name varchar(255) not null
 );

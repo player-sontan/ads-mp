@@ -14,10 +14,10 @@
  * limitations under the License.
  */
 
-package org.ads.test.service;
+package org.ads.test.mapper;
 
-import lombok.Data;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import org.ads.test.entity.GradeBook;
 
-@Data
-public class TeacherNotice {
+public interface GradeBookMapper extends BaseMapper<GradeBook> {
 }
