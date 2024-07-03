@@ -22,5 +22,5 @@ public interface AdsManagerConfigurer {
 
     void configureDriver(DriverRegistryConfigurer driverRegistry);
 
-    void configurePermissionCheckPredicate(ConfigurableAdsManager configurableAdsManager);
+    void configureCustomizedShouldByPassShieldCheck(ConfigurableAdsManager configurableAdsManager);
 }

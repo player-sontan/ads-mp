@@ -31,7 +31,7 @@ public class NormalProcessorInitializer {
 
     public NormalProcessorInitializer adsContext(AdsContext adsContext) {
         processor.setAdsContext(adsContext);
-        processor.setTablePermissionRegistry(adsContext.getDataShieldRegistry());
+        processor.setDataShieldRegistry(adsContext.getDataShieldRegistry());
         return this;
     }
 

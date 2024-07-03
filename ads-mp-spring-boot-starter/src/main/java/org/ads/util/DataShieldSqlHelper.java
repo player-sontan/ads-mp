@@ -63,7 +63,7 @@ public class DataShieldSqlHelper {
         }
     }
 
-    public static void addNoPermissionExpressionToSelectWhere(Supplier<PlainSelect> parent) {
+    public static void addSelectShieldEmptyAssetsExpressionToWhere(Supplier<PlainSelect> parent) {
         LongValue left = new LongValue().withValue(1L);
         LongValue right = new LongValue().withValue(0L);
         EqualsTo equalsTo = new EqualsTo().withLeftExpression(left).withRightExpression(right);

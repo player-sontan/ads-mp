@@ -23,7 +23,7 @@ public abstract class AbstractDataShieldProcessor implements DataShieldProcessor
     protected DataShieldRegistry dataShieldRegistry;
     protected AdsContext adsContext;
 
-    protected void setTablePermissionRegistry(DataShieldRegistry dataShieldRegistry) {
+    protected void setDataShieldRegistry(DataShieldRegistry dataShieldRegistry) {
         this.dataShieldRegistry = dataShieldRegistry;
     }
 
@@ -32,12 +32,12 @@ public abstract class AbstractDataShieldProcessor implements DataShieldProcessor
     }
 
     @Override
-    public boolean shouldSkipPermissionCheck() {
+    public boolean shouldByPassShield() {
         return false;
     }
 
     @Override
-    public boolean shouldSkipPermissionCheckForTable(String tableName) {
+    public boolean shouldByPassShieldForTable(String tableName) {
         return !dataShieldRegistry.tableHasDataShield(tableName);
     }
 

@@ -37,13 +37,13 @@ import java.util.function.Supplier;
 
 public class AdsManager implements DataShieldProcessor, ConfigurableAdsManager, AdsContext, InitializingBean {
 
-    private BooleanSupplier shouldDoPermissionCheck;
+    private BooleanSupplier customizedShouldByPassShieldCheck;
     private final DataShieldRegistry dataShieldRegistry;
     private DriverRegistry driverRegistry;
     private final AdsManagerConfigurer adsManagerConfigurer;
 
     public AdsManager(AdsTableConfigCenter adsTableConfigCenter, AdsManagerConfigurer adsManagerConfigurer) {
-        this.shouldDoPermissionCheck = () -> true;
+        this.customizedShouldByPassShieldCheck = () -> true;
 
         this.dataShieldRegistry = adsTableConfigCenter;
 
@@ -51,21 +51,21 @@ public class AdsManager implements DataShieldProcessor, ConfigurableAdsManager, 
     }
 
     @Override
-    public void configPermissionCheckPredicate(BooleanSupplier shouldDoPermissionCheck) {
-        this.shouldDoPermissionCheck = shouldDoPermissionCheck;
+    public void configureCustomizedShouldByPassShieldCheck(BooleanSupplier customizedShouldByPassShieldCheck) {
+        this.customizedShouldByPassShieldCheck = customizedShouldByPassShieldCheck;
     }
 
     @Override
-    public boolean shouldSkipPermissionCheck() {
+    public boolean shouldByPassShield() {
         if (dataShieldRegistry.globalShouldSkipShieldCheck()) {
             return true;
         }
 
-        return !shouldDoPermissionCheck.getAsBoolean();
+        return !customizedShouldByPassShieldCheck.getAsBoolean();
     }
 
     @Override
-    public boolean shouldSkipPermissionCheckForTable(String tableName) {
+    public boolean shouldByPassShieldForTable(String tableName) {
         DataShield dataShield = dataShieldRegistry.getTableDataShield(tableName);
         if (Objects.isNull(dataShield)) {
             return true;
@@ -75,7 +75,7 @@ public class AdsManager implements DataShieldProcessor, ConfigurableAdsManager, 
             throw new AdsRuntimeException("driver type " + driverType + " not available");
         }
 
-        return driverRegistry.getProcessor(driverType).shouldSkipPermissionCheckForTable(tableName);
+        return driverRegistry.getProcessor(driverType).shouldByPassShieldForTable(tableName);
     }
 
     @Override
@@ -133,11 +133,11 @@ public class AdsManager implements DataShieldProcessor, ConfigurableAdsManager, 
 
         if (this.adsManagerConfigurer != null) {
             this.adsManagerConfigurer.configureDriver(this.driverRegistry);
-            this.adsManagerConfigurer.configurePermissionCheckPredicate(this);
+            this.adsManagerConfigurer.configureCustomizedShouldByPassShieldCheck(this);
         }
 
-        this.dataShieldRegistry.iterateDataShields((tableName, tablePermission) -> {
-            String driverType = tablePermission.getDriverType();
+        this.dataShieldRegistry.iterateDataShields((tableName, tableShield) -> {
+            String driverType = tableShield.getDriverType();
             if (!driverRegistry.hasAvailableDriver(driverType)) {
                 throw new AdsStartupException("driver type " + driverType + " not available");
             }

@@ -33,13 +33,13 @@ public class AdsCustomConfigurer implements AdsManagerConfigurer {
     @Override
     public void configureDriver(DriverRegistryConfigurer driverRegistry) {
         driverRegistry
-                .definePermissionDriver(new ClassDriver(), new ClassAssetsProvider())
-                .definePermissionDriver(new GradeDriver(), new GradeDataShieldProcessor())
-                .definePermissionDriver(new TeacherDriver(), new TeacherDataShieldProcessor());
+                .registeredDriverType(new ClassDriver(), new ClassAssetsProvider())
+                .registeredDriverType(new GradeDriver(), new GradeDataShieldProcessor())
+                .registeredDriverType(new TeacherDriver(), new TeacherDataShieldProcessor());
     }
 
     @Override
-    public void configurePermissionCheckPredicate(ConfigurableAdsManager configurableAdsManager) {
-        configurableAdsManager.configPermissionCheckPredicate(() -> true);
+    public void configureCustomizedShouldByPassShieldCheck(ConfigurableAdsManager configurableAdsManager) {
+        configurableAdsManager.configureCustomizedShouldByPassShieldCheck(() -> true);
     }
 }

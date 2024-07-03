@@ -53,7 +53,7 @@ public class AdsMyBatisPlusInterceptor extends JsqlParserSupport implements Inne
         }
 
         AdsManager adsManager = SpringContextUtil.getBean(AdsManager.class);
-        if (adsManager.shouldSkipPermissionCheck()) {
+        if (adsManager.shouldByPassShield()) {
             return true;
         }
 
@@ -80,7 +80,7 @@ public class AdsMyBatisPlusInterceptor extends JsqlParserSupport implements Inne
     @Override
     public void beforePrepare(StatementHandler sh, Connection connection, Integer transactionTimeout) {
         AdsManager adsManager = SpringContextUtil.getBean(AdsManager.class);
-        if (adsManager.shouldSkipPermissionCheck()) {
+        if (adsManager.shouldByPassShield()) {
             return;
         }
         BoundSql boundSql = sh.getBoundSql();

@@ -31,13 +31,13 @@ import org.springframework.context.annotation.Configuration;
 public class AdsAutoConfiguration {
 
     @Bean
-    public AdsTableGlobalConfiguration dataPermissionGlobalConfiguration() {
+    public AdsTableGlobalConfiguration ddsTableGlobalConfiguration() {
         return new AdsTableGlobalConfiguration();
     }
 
     @Bean
-    public AdsTableConfigCenter dataPermissionConfigCenter() {
-        return new AdsTableConfigCenter(dataPermissionGlobalConfiguration());
+    public AdsTableConfigCenter adsTableConfigCenter() {
+        return new AdsTableConfigCenter(ddsTableGlobalConfiguration());
     }
 
     @Bean
@@ -48,15 +48,15 @@ public class AdsAutoConfiguration {
     @Bean
     @ConditionalOnBean(AdsManagerConfigurer.class)
     public AdsManager adsManager(AdsManagerConfigurer adsManagerConfigurer) {
-        return new AdsManager(dataPermissionConfigCenter(), adsManagerConfigurer);
+        return new AdsManager(adsTableConfigCenter(), adsManagerConfigurer);
     }
 
     @Bean
     @ConditionalOnMissingBean(AdsManagerConfigurer.class)
     public AdsManager adsManagerDefault() {
-        if (dataPermissionConfigCenter().globalShouldSkipShieldCheck()) {
+        if (adsTableConfigCenter().globalShouldSkipShieldCheck()) {
             throw new AdsStartupException("ads is enabled, but you have not config ads by implementing AdsManagerConfigurer");
         }
-        return new AdsManager(dataPermissionConfigCenter(), null);
+        return new AdsManager(adsTableConfigCenter(), null);
     }
 }

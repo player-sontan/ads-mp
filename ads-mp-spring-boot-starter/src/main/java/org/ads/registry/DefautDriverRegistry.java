@@ -50,7 +50,7 @@ public class DefautDriverRegistry implements DriverRegistry {
     }
 
     @Override
-    public DriverRegistry definePermissionDriver(DriverType driverType, AssetsProvider assetsProvider) {
+    public DriverRegistry registeredDriverType(DriverType driverType, AssetsProvider assetsProvider) {
         if (driverTypes.containsKey(driverType.name())) {
             throw new AdsStartupException("driver type " + driverType.name() + " already defined");
         }
@@ -62,7 +62,7 @@ public class DefautDriverRegistry implements DriverRegistry {
     }
 
     @Override
-    public DriverRegistry definePermissionDriver(DriverType driverType, DataShieldProcessor processor) {
+    public DriverRegistry registeredDriverType(DriverType driverType, DataShieldProcessor processor) {
         if (driverTypes.containsKey(driverType.name())) {
             throw new AdsStartupException("driver type " + driverType.name() + " already defined");
         }

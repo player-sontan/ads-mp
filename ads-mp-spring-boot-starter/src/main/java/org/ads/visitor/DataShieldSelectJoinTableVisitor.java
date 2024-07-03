@@ -30,7 +30,7 @@ public class DataShieldSelectJoinTableVisitor extends FromItemVisitorAdapter {
     public void visit(Table table) {
         String name = table.getName();
         AdsManager adsManager = SpringContextUtil.getBean(AdsManager.class);
-        if (adsManager.shouldSkipPermissionCheckForTable(name)) {
+        if (adsManager.shouldByPassShieldForTable(name)) {
             return;
         }
 

@@ -25,9 +25,9 @@ import java.util.function.Supplier;
 
 public interface DataShieldProcessor {
 
-    boolean shouldSkipPermissionCheck();
+    boolean shouldByPassShield();
 
-    boolean shouldSkipPermissionCheckForTable(String tableName);
+    boolean shouldByPassShieldForTable(String tableName);
 
     void processSelect(Table table, Supplier<PlainSelect> parentSelectNode);
 

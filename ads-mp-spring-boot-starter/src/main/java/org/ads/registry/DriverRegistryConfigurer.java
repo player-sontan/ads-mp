@@ -22,7 +22,7 @@ import org.ads.provider.AssetsProvider;
 
 public interface DriverRegistryConfigurer {
 
-    DriverRegistry definePermissionDriver(DriverType driverType, DataShieldProcessor processor);
+    DriverRegistry registeredDriverType(DriverType driverType, DataShieldProcessor processor);
 
-    DriverRegistry definePermissionDriver(DriverType driverType, AssetsProvider assetsProvider);
+    DriverRegistry registeredDriverType(DriverType driverType, AssetsProvider assetsProvider);
 }

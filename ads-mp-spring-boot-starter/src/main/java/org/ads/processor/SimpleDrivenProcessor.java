@@ -40,7 +40,7 @@ public class SimpleDrivenProcessor extends AbstractDataShieldProcessor {
         List<Object> list = assetsProvider.provideReadOnlyValueList();
 
         if (CollectionUtils.isEmpty(list)) {
-            DataShieldSqlHelper.addNoPermissionExpressionToSelectWhere(parentSelectNode);
+            DataShieldSqlHelper.addSelectShieldEmptyAssetsExpressionToWhere(parentSelectNode);
             return;
         }
 

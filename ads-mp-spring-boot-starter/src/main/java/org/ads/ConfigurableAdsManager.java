@@ -20,5 +20,5 @@ import java.util.function.BooleanSupplier;
 
 public interface ConfigurableAdsManager {
 
-    void configPermissionCheckPredicate(BooleanSupplier shouldDoPermissionCheck);
+    void configureCustomizedShouldByPassShieldCheck(BooleanSupplier customizedShouldByPassShieldCheck);
 }
